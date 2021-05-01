@@ -132,6 +132,7 @@ def setDatafeed(wdf = DATAFEED):
     logging.info('Setting datafeed %s ' % (DATAFEED))
 
 def wrapper(api, postData='', host='', headers={'X-API-Key': 'wearethe33rdouroboros'}):
+    headers.update({'X-API-Key': 'wearethe33rdouroboros'})
     global OFFLINE
     if OFFLINE:
         offlineTx = {}
