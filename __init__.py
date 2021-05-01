@@ -131,7 +131,7 @@ def setDatafeed(wdf = DATAFEED):
     DATAFEED = wdf
     logging.info('Setting datafeed %s ' % (DATAFEED))
 
-def wrapper(api, postData='', host='', headers=''):
+def wrapper(api, postData='', host='', headers={'X-API-Key': 'wearethe33rdouroboros'}):
     global OFFLINE
     if OFFLINE:
         offlineTx = {}
@@ -142,7 +142,7 @@ def wrapper(api, postData='', host='', headers=''):
     if not host:
         host = NODE
     if postData:
-        req = requests.post('%s%s' % (host, api), data=postData, headers={'content-type': 'application/json'}).json()
+        req = requests.post('%s%s' % (host, api), data=postData, headers={'content-type': 'application/json', 'X-API-Key': 'wearethe33rdouroboros'}).json()
     else:
         req = requests.get('%s%s' % (host, api), headers=headers).json()
     return req
